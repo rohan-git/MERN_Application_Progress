@@ -5,6 +5,21 @@ const keys = require('../config/keys');
 
 const User = mongoose.model('users');
 
+//put this user in cookie to be used for subsequent requests
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+// logout or cookie expiraation ...
+passport.deserializeUser((id, done) => {
+
+  User.findById(id).then(user => {
+    done(null, user);
+
+  });
+});
+
+
 passport.use(
     new GoogleStrategy(
     {
@@ -21,15 +36,14 @@ passport.use(
 
           User.findOne({googleId: profile.id}).then((user) => {
 
-            if(!user){
+            if(user){
+              done(null, user); // null for error info.
+            }
+            else{
               new User({ "googleId" : profile.id }).save().then(newUser => {
                 done(null ,newUser);
               });
-              return;
             }
-
-            done(null, user); // null for error info.
-
           });
 
           console.log('profile: -->', profile.id);
