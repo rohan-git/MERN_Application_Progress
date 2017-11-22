@@ -14,11 +14,13 @@ passport.use(
     },
     (accessToken, refreshToken, profile, done) =>
     {
-          console.log('accessToken:', accessToken);
-          console.log('refreshToken:', refreshToken);
-          console.log('profile:', profile);
+          // console.log('accessToken:', accessToken);
+          // console.log('refreshToken:', refreshToken);
+          // console.log('profile:', profile);
           //console.log('accessToken:', accessToken);
 
-          new User({googleId: profile.id}).save();
+          new User({ "googleId" : profile.id }).save();
+
+          console.log('profile: -->', profile.id);
     })
 );
