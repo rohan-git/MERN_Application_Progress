@@ -19,7 +19,11 @@ passport.use(
           // console.log('profile:', profile);
           //console.log('accessToken:', accessToken);
 
-          new User({ "googleId" : profile.id }).save();
+          User.findOne({googleId: profile.id}).then((user) => {
+            if(!user){
+              new User({ "googleId" : profile.id }).save();
+            }
+          });
 
           console.log('profile: -->', profile.id);
     })
