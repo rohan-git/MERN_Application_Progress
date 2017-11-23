@@ -23,6 +23,7 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// need app present beforehand
 require('./routes/authRoutes')(app);
 
 app.get('/', (req, resp) => {
