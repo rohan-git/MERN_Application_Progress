@@ -28,6 +28,7 @@ require('./routes/authRoutes')(app);
 
 app.get('/', (req, resp) => {
     resp.write("wee");
+    console.log('default route');
 });
 
 const PORT = process.env.PORT || 5000;
