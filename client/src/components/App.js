@@ -4,7 +4,7 @@ import '../App.css';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 
-const Header = () => <h2> Header </h2>;
+import Header from './Header';
 const Dashboard = () => <h2> Dashboard </h2>;
 const SurveyNew = () => <h2> SurveyNew </h2>;
 const Landing = () => <h2> Landing </h2>;
@@ -14,11 +14,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <Header />
         <BrowserRouter>
           <div>
-            <Route path="/dashboard" component= {Dashboard} />
-            <Route path="/surveys" component= {SurveyNew} />
-            <Route path="/" exact component= {Landing} />
+            <Route exact path="/surveys" component= {Dashboard} />
+            <Route exact path="/surveys/new" component= {SurveyNew} />
+            <Route exact path="/" component= {Landing} />
           </div>
         </BrowserRouter>
       </div>
