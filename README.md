@@ -4,6 +4,8 @@ A MERN Application (MongoDB, ExpressJS, ReactJS, NodeJS) progress work from Full
 Link to original course: 
 https://www.udemy.com/node-with-react-fullstack-web-development
 
+Has some more additional content compared to the original course (see below) ...
+
 Application URLS  
 
 DEV: https://infinite-fortress-48675.herokuapp.com/     --- automated build and deploy tied to `work-1`  
