@@ -1,8 +1,9 @@
-# MERN_Application_Progress
+# A MERN Application
+
 A MERN Application (MongoDB, ExpressJS, ReactJS, NodeJS) progress work from FullStackReact Udemy Course
 
-Link to original course: 
-https://www.udemy.com/node-with-react-fullstack-web-development
+[Link to original udemy course](https://www.udemy.com/node-with-react-fullstack-web-development "Original Course"):  
+( https: // www. udemy .com/ node-with-react-fullstack-web-development )
 
 Has some more additional content compared to the original course (see below) ...
 
