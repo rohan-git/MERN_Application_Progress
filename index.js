@@ -15,6 +15,8 @@ console.log('cookie key --- ', [keys.cookieKey]);
 
 const app = express();
 
+console.log('started expressJS ... ');
+
 app.use(cookieSession({
   maxAge: 30 * 24 * 60 * 60 * 1000,
   keys: [keys.cookieKey]
@@ -23,6 +25,8 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
+console.log('added passportJS ... ');
+
 // need app present beforehand
 require('./routes/authRoutes')(app);
 
@@ -30,6 +34,8 @@ app.get('/', (req, resp) => {
     resp.write("wee");
     console.log('default route');
 });
+
+console.log('starting app ... ');
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
