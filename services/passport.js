@@ -30,24 +30,23 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
 
-          // console.log('accessToken:', accessToken);
-          // console.log('refreshToken:', refreshToken);
-          // console.log('profile:', profile);
-          //console.log('accessToken:', accessToken);
+      // console.log('accessToken:', accessToken);
+      // console.log('refreshToken:', refreshToken);
+      // console.log('profile:', profile);
+      //console.log('accessToken:', accessToken);
 
-          const user = User.findOne({ googleId: profile.id });
+      const user = User.findOne({ googleId: profile.id });
 
-          if(user) {
-            done(null, user); // null for error info.
-          }
-          else {
-            const newUser = new User({ "googleId" : profile.id }).save();
+      if(user) {
+        return done(null, user); // null for error info.
+      }
 
-            if(newUser){
-              done(null, newUser);
-            }
-          }
+      const newUser = new User({ "googleId" : profile.id }).save();
 
-          console.log('profile: -->', profile.id);
-    })
-);
+      if(newUser) {
+        done(null, newUser);
+      }
+
+      console.log('profile: -->', profile.id);
+    }
+));
