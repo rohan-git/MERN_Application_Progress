@@ -2,9 +2,7 @@ import axios from 'axios';
 
 import {FETCH_USER} from './action_types';
 
-export const fetchUser = () =>
-
- function(dispatch){
+export const fetchUser = () => (dispatch) => {
 
   axios.get('api/current_user').then(res => {
 
