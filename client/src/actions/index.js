@@ -2,9 +2,9 @@ import axios from 'axios';
 
 import {FETCH_USER} from './action_types';
 
-export const fetchUser = () => (dispatch) => {
+export const fetchUser = () => async (dispatch) => {
 
-  axios.get('api/current_user').then(res => {
+  const res = await axios.get('api/current_user');
 
     console.log('FETCH_USER', FETCH_USER);
 
