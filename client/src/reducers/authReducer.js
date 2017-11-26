@@ -1,6 +1,5 @@
 import React from 'react';
-
-export const MY_CONST = 'MY_CONST';
+import {FETCH_USER} from '../actions/action_types'
 
 export default function (state = {}, action) {
 switch (action.type) {
