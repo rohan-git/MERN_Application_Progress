@@ -1,12 +1,15 @@
 import React from 'react';
 import {FETCH_USER} from '../actions/action_types'
 
-export default function (state = {}, action) {
+export default function (state = null, action) {
+
 switch (action.type) {
+
     case FETCH_USER:
         console.log('FETCH_USER reducer action:', action);
-        return action;
+        return action.payload || false;
       break;
+
     default:
       return state;
 
