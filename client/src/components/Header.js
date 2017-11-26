@@ -10,7 +10,16 @@ export default class Header extends Component {
   }
 
   render(){
-    return (<div> Header </div> );
+    return (<nav>
+              <div className="nav-wrapper">
+                <a className="left brand-logo"> Header </a>
+                <ul className="right">
+                  <li>
+                    <a>Login With Google</a>
+                  </li>
+                </ul>
+              </div>
+            </nav> );
   }
 }
 

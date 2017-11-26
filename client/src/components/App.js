@@ -1,5 +1,5 @@
 import '../App.css';
-import MaterializeCSS from 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/css/materialize.min.css';
 
 import React, { Component } from 'react';
 import logo from '../logo.svg';
@@ -15,18 +15,18 @@ const Landing = () => <h2> Landing </h2>;
 class App extends Component {
   render() {
     return (
-      <div className="App">
-      <Header />
-        <BrowserRouter>
-          <div>
-            <Route exact path="/surveys" component= {Dashboard} />
-            <Route exact path="/surveys/new" component= {SurveyNew} />
-            <Route exact path="/" component= {Landing} />
-          </div>
-        </BrowserRouter>
-      </div>
-    );
-  }
+        <div>
+            <Header />
+              <BrowserRouter>
+                <div>
+                  <Route exact path="/surveys" component= {Dashboard} />
+                  <Route exact path="/surveys/new" component= {SurveyNew} />
+                  <Route exact path="/" component= {Landing} />
+                </div>
+              </BrowserRouter>
+            </div>
+          );
+        }
 }
 
 // <div className="App">
