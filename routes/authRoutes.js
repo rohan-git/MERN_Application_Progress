@@ -14,7 +14,11 @@ module.exports = app => {
   });
 
   app.get('/api/current_user', (req, res) => {
-    console.log('req.user: ', {user: req.user});
-    res.send({user: req.user});     // send json here or it fails..
+
+    // console.log('-- > req.user: ', req);
+    // console.log('-- > res : ', res);
+    console.log('-- > req.user: ', req.user);
+
+    res.send(req.user);     // send json here or it fails..
   });
 }
