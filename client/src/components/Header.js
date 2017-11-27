@@ -12,7 +12,7 @@ class Header extends Component {
     switch (this.props.auth) {
 
       case null:
-        return;
+        return <li>Logging in ...</li>;;
 
       case false:
         return <li><a href="/auth/google">Login With Google</a></li>;
@@ -37,7 +37,8 @@ class Header extends Component {
 }
 
 function mapStateToProps(state){
-  auth: state.auth
+  console.log('state.auth', state.auth);
+  return {auth: state.auth};
 }
 
 export default connect(mapStateToProps)(Header);
