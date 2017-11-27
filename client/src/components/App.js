@@ -24,10 +24,10 @@ class App extends Component {
 
   render() {
     return (
-        <div>
-            <Header />
+        <div className="component">
               <BrowserRouter>
                 <div>
+                  <Header />
                   <Route exact path="/surveys" component= {Dashboard} />
                   <Route exact path="/surveys/new" component= {SurveyNew} />
                   <Route exact path="/" component= {Landing} />
