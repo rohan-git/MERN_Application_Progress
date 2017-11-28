@@ -1,5 +1,5 @@
 import React from 'react';
-import {FETCH_USER} from '../actions/action_types'
+import { FETCH_USER } from '../actions/action_types'
 
 export default function (state = null, action) {
 

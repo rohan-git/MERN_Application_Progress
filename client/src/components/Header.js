@@ -7,6 +7,7 @@ import Payments from './Payments';
 class Header extends Component {
 
   constructor(props){
+    
     super(props);
   }
 
@@ -43,6 +44,7 @@ class Header extends Component {
 }
 
 function mapStateToProps(state){
+
   console.log('state.auth', state.auth);
   return {auth: state.auth};
 }
