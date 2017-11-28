@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
+
 const requireLogin = require('../middlewares/requireLogin');
 const requireCredits = require('../middlewares/requireCredits');
+
+const mailer = require('../services/Mailer');
+const surveyTemplate = require('../services/emailTemplate');
 
 const Survey = mongoose.model('Survey');
 
@@ -19,6 +23,11 @@ module.exports = app => {
       _user: req.user.id,
       dateSent: Date.now(),
     });
+
+    // send survey email right after it gets saved
+    const mailer = new Mailer(survey, surveyTemplate(survey));
+
+
 
   });
 
