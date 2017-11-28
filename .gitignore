@@ -1,2 +1,8 @@
 node_modules
 config/dev.js
+client/.env*
+client/.env.development
+client/.env.production
+client/.env.development
+client/.env.development
+client/.env.production
