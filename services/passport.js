@@ -35,13 +35,14 @@ passport.use(
       // console.log('profile:', profile);
       //console.log('accessToken:', accessToken);
 
-      const user = User.findOne({ googleId: profile.id });
+      const user = await User.findOne({ googleId: profile.id });
 
       if(user) {
+        // console.log('-- > db returned', profile.id);
         return done(null, user); // null for error info.
       }
 
-      const newUser = new User({ "googleId" : profile.id }).save();
+      const newUser = await new User({ "googleId" : profile.id }).save();
 
       if(newUser) {
         done(null, newUser);

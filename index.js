@@ -30,6 +30,8 @@ console.log('added passportJS ... ');
 // need app present beforehand
 require('./routes/authRoutes')(app);
 
+require('./routes/billingRoutes')(app);
+
 app.get('/', (req, resp) => {
     resp.write("wee");
     console.log('default route');
