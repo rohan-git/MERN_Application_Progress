@@ -24,12 +24,24 @@ class Mailer extends helper.Mail {
     this.addRecipients();
   }
 
-  formatAddresses(recipients){
+  // formatAddresses(recipients){
+  //
+  //   const x = recipients.map(recipient => return new helper.Email(recipient.email));
+  //
+  //   console.log('recipients', x);
+  //
+  //   return x;
+  // }
 
-    return recipients.map({email}) => {
-      return new helper.Email(email);
-    }
-  }
+  formatAddresses(recipients) {
+  const x = recipients.map(({ email }) => {
+     return new helper.Email(email);
+   });
+
+   console.log('recipients', x);
+
+   return x;
+ }
 
   addClickTracking(){
 
