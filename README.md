@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/rohan-git/MERN_Application_Progress.svg?branch=work-1.png)](https://travis-ci.org/rohan-git/MERN_Application_Progress.svg?branch=work-1-1)
+[![Build Status](https://travis-ci.org/rohan-git/MERN_Application_Progress.svg?branch=work-1-1)](https://travis-ci.org/rohan-git/MERN_Application_Progress)
 
 # A MERN Application
 
