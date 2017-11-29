@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - 9
+cache:
+  directories:
+    - node_modules
+before_script:
+  - chmod 755 script.sh
+script:
+  - ./script.sh
