@@ -10,6 +10,10 @@ import registerServiceWorker from './registerServiceWorker';
 import App from './components/App';
 import reducers from './reducers/index.js';
 
+// testing email
+import axios from 'axios';
+window.axios = axios;
+
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk))
 
 ReactDOM.render(
