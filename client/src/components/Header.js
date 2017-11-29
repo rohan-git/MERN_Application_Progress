@@ -1,48 +1,56 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import Payments from './Payments';
 
 class Header extends Component {
 
   constructor(props){
+
     super(props);
   }
 
-
-  renderContent(){
+  renderHeader(){
 
     switch (this.props.auth) {
 
       case null:
-          return 'Still logging in...';
-        break;
+        return <li>Logging in ...</li>;;
+
       case false:
-          return 'Sign in with Google';
-        break;
+        return <li><a href="/auth/google">Login With Google</a></li>;
 
       default:
-        return 'Sign out'; //this.props.auth.data.user.id;
-
+        return [
+                 <li key="1"><Payments /></li> ,
+                 <li key="2" style={{ margin: '0 10px' }}>
+                    Credits: {this.props.auth.credits}
+                 </li>,
+                 <li key="3">
+                    <a href="/api/logout">Logout</a>
+                 </li>
+               ];
     }
-
   }
 
   render(){
-    console.log('in header', this.props);
-    return (<nav>
+
+    return ( <nav>
               <div className="nav-wrapper">
-                <a className="left brand-logo"> Header </a>
+                <Link className="left brand-logo" to={this.props.auth ? '/surveys': '/' }> Emaily! </Link>
                 <ul className="right">
-                  <li>
-                    <a>{this.renderContent()}</a>
-                  </li>
+                  {this.renderHeader()}
                 </ul>
               </div>
-            </nav> );
+             </nav> );
   }
 }
 
 function mapStateToProps(state){
-  auth: state.auth;
+
+  console.log('state.auth', state.auth);
+  return {auth: state.auth};
 }
 
 export default connect(mapStateToProps)(Header);
