@@ -1,18 +1,23 @@
 const mongoose = require('mongoose');
 
 const requireLogin = require('../middlewares/requireLogin');
-const requireCredits = require('../middlewares/requireCredits');
+const requireCredits = require('../middlewares/requireSurveyCredit');
 
-const mailer = require('../services/Mailer');
+const Mailer = require('../services/Mailer');
 const surveyTemplate = require('../services/emailTemplate');
 
-const Survey = mongoose.model('Survey');
+const Survey = mongoose.model('survey');
 
 module.exports = app => {
 
   app.post('/api/survey', requireLogin, requireCredits,  (req, res) => {
 
+    console.log('--> in /api/survey');
+
     const { title, subject, body, recipients } = req.body;
+    //
+    console.log('--> recipients', recipients.split(','));
+    // console.log('--> Mailer', Mailer);
 
     const survey = new Survey({
 
