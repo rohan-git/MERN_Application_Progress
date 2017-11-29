@@ -1,4 +1,4 @@
-const passport = require('sendgrid');
+const sendgrid = require('sendgrid');
 const helper = sendgrid.mail; // `helper` name is used thruout sendgrid documentation
 
 const keys = require('../config/keys');
@@ -11,10 +11,12 @@ class Mailer extends helper.Mail {
   constructor({subject, recipients}, content){
     super();
 
+    console.log('--> mailer constructor');
+
     this.sgAPI = sendgrid(keys.sendGridKey);
 
     this.from_email = new helper.Email('no-reply@emaily.com');
-    this.subject subject;
+    this.subject = subject;
     this.body = new helper.Content('text/html', content);
     this.recipients = this.formatAddresses(recipients);
 
@@ -48,7 +50,7 @@ class Mailer extends helper.Mail {
     const trackingSettings = new helper.TrackingSettings();
     const clickTracking = new helper.ClickTracking(true, true);
 
-    trackingSettings.setClickTracking(clicktracking);
+    trackingSettings.setClickTracking(clickTracking);
     this.addTrackingSettings(trackingSettings);
 
   }
@@ -67,7 +69,9 @@ class Mailer extends helper.Mail {
 
   async send(){
 
-    const request = sgAPI.emptyRequest({
+    console.log(' --> sending', this.toJSON());
+
+    const request = this.sgAPI.emptyRequest({
       method: 'POST',
       path: 'v3/mail/send',
       body: this.toJSON()
