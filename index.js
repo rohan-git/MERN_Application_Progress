@@ -38,10 +38,13 @@ app.use(passport.session());
 
 console.log('added passportJS ... ');
 
+
+// Routes
 // need app present beforehand
 require('./routes/authRoutes')(app);
 
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 app.get('/', (req, resp) => {
     resp.write("wee");
