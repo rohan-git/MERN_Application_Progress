@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/rohan-git/MERN_Application_Progress.svg?branch=work-1.png)](https://travis-ci.org/rohan-git/MERN_Application_Progress.svg?branch=work-1-1)
+
 # A MERN Application
 
 A MERN Application (MongoDB, ExpressJS, ReactJS, NodeJS) progress work from FullStackReact Udemy Course
