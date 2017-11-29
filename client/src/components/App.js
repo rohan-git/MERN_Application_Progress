@@ -11,10 +11,8 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import * as actions from '../actions';
 import Header from './Header';
 import Landing from './Landing';
-
-const Dashboard = () => <h2> Dashboard </h2>;
-const SurveyNew = () => <h2> SurveyNew </h2>;
-
+import Dashboard from './Dashboard';
+import SurveyNew from './Surveys/SurveyNew';
 
 class App extends Component {
 
@@ -33,6 +31,7 @@ class App extends Component {
                   <Route exact path="/surveys" component= {Dashboard} />
                   <Route exact path="/surveys/new" component= {SurveyNew} />
                   <Route exact path="/" component= {Landing} />
+                  <Dashboard />
                 </div>
               </BrowserRouter>
             </div>
