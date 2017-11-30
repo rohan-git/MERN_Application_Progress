@@ -10,11 +10,8 @@ class SurveyForm extends React.Component{
   renderFields(){
 
     return (<div>
-        <Field type="text" name="surveyTitle" component="{SurveyField}" />
-      </div>);
-
-
-
+              <Field type="text" name="surveyTitle" component={SurveyField} />
+            </div>);
 
       // <Field type="text" name="surveyTitle" component="input" />
       // <Field type="text" name="surveyTitle" component="input" />

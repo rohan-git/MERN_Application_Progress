@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 
-
-export default () => {
+export default ({input}) => {
 
   return (
 
-    <div> < input /> </div>
+    <div> < input = {... input} /> </div>
 
   );
 
