@@ -58,18 +58,12 @@ function validate(values, meta){
 
   const error = {};
 
-  if(!(values.title && meta.pristine)){
-    error.title = 'You must provide a title!';
-  }
-  if(!values.subject){
-    error.subject = 'You must provide a subject!';
-  }
-  if(!values.email){
-    error.email = 'You must provide a email!';
-  }
-  if(!values.body){
-    error.body = 'You must provide a body!';
-  }
+  _.each(FIELD, ({name}) => {
+
+    if(!values[name])
+      errors[name] = 'You must provide a value';
+
+  });
 
   return error;
 }
