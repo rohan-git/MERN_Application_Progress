@@ -17,7 +17,12 @@ class SurveyForm extends React.Component {
      // console.log('--> renderFields');
 
     return ( _.map( FIELDS, ({ label, name }) => {
-      return <Field key={label} component={SurveyField} type="text" label={label} name={name} />
+
+      return <Field key={label}
+                    component={SurveyField}
+                    type="text"
+                    label={label}
+                    name={name} />
       })
     );
 
@@ -32,10 +37,10 @@ class SurveyForm extends React.Component {
         <form onSubmit={ this.props.handleSubmit(values => console.log(values)) }>
           { this.renderFields() }
           <button className="teal btn-flat right white-text" type="submit">
-            <i className="material-icons right done">Next</i>
+            <i className="material-icons right">done</i>Done
           </button>
           <Link className="red btn-flat right white-text" to="/surveys">
-            <i className="material-icons right done">Cancel</i>
+            <i className="material-icons right">cancel</i>Cancel
           </Link>
         </form>
       </div>
@@ -48,13 +53,25 @@ class SurveyForm extends React.Component {
 
 function validate(values, meta){
 
-  const errors = {};
+  console.log('--> values', values);
+  console.log('--> meta', meta);
 
-  if(!values.title && meta.touched){
-    errors.title = 'You must provide a title!';
+  const error = {};
+
+  if(!(values.title && meta.pristine)){
+    error.title = 'You must provide a title!';
+  }
+  if(!values.subject){
+    error.subject = 'You must provide a subject!';
+  }
+  if(!values.email){
+    error.email = 'You must provide a email!';
+  }
+  if(!values.body){
+    error.body = 'You must provide a body!';
   }
 
-  return errors;
+  return error;
 }
 
 export default reduxForm({

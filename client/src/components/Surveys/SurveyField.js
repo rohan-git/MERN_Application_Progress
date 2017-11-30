@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 
 export default ({ input, label, meta : {error, touched } }) => {
 
-  console.log(meta);
+  //console.log(touched);
 
   return (
     <div>
-      <label>{label}</label>
-      <input {... input} />
-      { touched && error }
+      <label>{label} -- {touched} -- {error}</label>
+        <input {... input} style = {{"marginBottom": "5px"}} />
+        { touched && error }
     </div>
   );
 
