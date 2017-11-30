@@ -26,7 +26,7 @@ class App extends Component {
     return (
         <div className="component">
               <BrowserRouter>
-                <div>
+                <div className="container">
                   <Header />
                   <Route exact path="/surveys" component= {Dashboard} />
                   <Route exact path="/surveys/new" component= {SurveyNew} />
