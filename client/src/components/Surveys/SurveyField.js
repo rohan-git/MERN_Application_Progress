@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default ({ input, label, meta }) => {
+export default ({ input, label, meta : {error, touched } }) => {
 
   console.log(meta);
 
@@ -8,7 +8,7 @@ export default ({ input, label, meta }) => {
     <div>
       <label>{label}</label>
       <input {... input} />
-      { meta.error }
+      { touched && error }
     </div>
   );
 
