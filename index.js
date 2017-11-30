@@ -1,3 +1,4 @@
+// express related
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -5,15 +6,21 @@ const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 
-const keys = require('./config/keys');
-
+// models
 require('./models/User');
+require('./models/Survey');
+
+// services
 require('./services/passport');
+
+// user created
+const keys = require('./config/keys');
 
 console.log('mongo uri key --- ', keys.mongoURI);
 mongoose.connect(keys.mongoURI);
 
 console.log('cookie key --- ', [keys.cookieKey]);
+
 
 const app = express();
 
@@ -31,10 +38,13 @@ app.use(passport.session());
 
 console.log('added passportJS ... ');
 
+
+// Routes
 // need app present beforehand
 require('./routes/authRoutes')(app);
 
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 app.get('/', (req, resp) => {
     resp.write("wee");
