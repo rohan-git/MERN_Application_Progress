@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import {FETCH_USER} from './action_types';
+import { FETCH_USER } from './action_types';
 
 export const fetchUser = () => async (dispatch) => {
 

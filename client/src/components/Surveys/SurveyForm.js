@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import _ from 'lodash';
 
 import SurveyField from './SurveyField';
-import validateEmails from './utils/validateEmails';
+import validateEmails from '../utils/validateEmails';
 
 const FIELDS = [{ label: 'Survey Title', name: 'title' },
                 { label: 'Subject Line', name: 'subject' },
