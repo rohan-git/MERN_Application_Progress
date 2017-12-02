@@ -5,11 +5,7 @@ import SurveyFormReview from './SurveyFormReview';
 
 export default class SurveyNew extends React.Component {
 
-  coonstructor(props){
-    super(props);
-
-    this.state = { new: true};
-  }
+  state = {formReview: false};
 
   render(){
     return ( <div>
