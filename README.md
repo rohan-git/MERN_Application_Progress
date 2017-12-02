@@ -1,3 +1,4 @@
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/rohan-git/MERN_Application_Progress.png?columns=all)](https://waffle.io/rohan-git/MERN_Application_Progress?utm_source=badge)
 [![Build Status](https://travis-ci.org/rohan-git/MERN_Application_Progress.svg?branch=work-1-1)](https://travis-ci.org/rohan-git/MERN_Application_Progress)
 
 [![Build Status](https://semaphoreci.com/api/v1/rohan-git/mern_application_progress/branches/work-1-1/badge.svg)](https://semaphoreci.com/rohan-git/mern_application_progress)
