@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
 import SurveyField from './SurveyField';
-import validateEmails from '../utils/validateEmails';
+import SurveyReview from './SurveyReview';
+import formFields from './formFields';
 
-const FIELDS = [{ label: 'Survey Title', name: 'title' },
-                { label: 'Subject Line', name: 'subject' },
-                { label: 'Email body', name: 'body' },
-                { label: 'Recipient List', name: 'emails' }];
+import validateEmails from '../utils/validateEmails';
 
 class SurveyForm extends React.Component {
 
@@ -17,7 +15,7 @@ class SurveyForm extends React.Component {
 
      // console.log('--> renderFields');
 
-    return ( _.map( FIELDS, ({ label, name }) => {
+    return ( _.map( formFields, ({ label, name }) => {
 
       return <Field key={label}
                     component={SurveyField}
@@ -35,10 +33,10 @@ class SurveyForm extends React.Component {
 
       <div>
         <h3>Form!</h3>
-        <form onSubmit={ this.props.handleSubmit(values => console.log(values)) }>
+        <form onSubmit={ this.props.handleSubmit( this.props.onSurveySubmit ) }>
           { this.renderFields() }
           <button className="teal btn-flat right white-text" type="submit">
-            <i className="material-icons right">done</i>Done
+            <i className="material-icons right">done</i>Next
           </button>
           <Link className="red btn-flat right white-text" to="/surveys">
             <i className="material-icons right">cancel</i>Cancel
@@ -61,7 +59,7 @@ function validate(values, meta){
 
   error.emails = validateEmails(values.emails || '');
 
-  _.each(FIELDS, ({name}) => {
+  _.each(formFields, ({name}) => {
 
     if(!values[name])
       error[name] = 'You must provide a value';
