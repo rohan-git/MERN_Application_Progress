@@ -24,3 +24,15 @@ export const handleToken = (token) => async (dispatch) => {
   dispatch({ type: FETCH_USER, payload: res.data });
 
 }
+
+export const submitSurvey = (values) => async (dispatch) => {
+
+  console.log('handleToken token: ', values);
+
+  // const res = await axios.post('/api/stripe', token);
+
+  //console.log('--> handleToken token completed ');
+
+  dispatch({ type: FETCH_USER, payload: values });
+
+}
