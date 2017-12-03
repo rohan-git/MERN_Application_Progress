@@ -70,29 +70,32 @@ module.exports = app => {
 
     //console.log(' --> from sendgrid & localtunnel', res);
 
-    const events = _.map(req.body, (event) => {
+    const events = _.map(req.body, ({email, url}) => {
 
-      const pathName = new URL(event.url).pathname;
+      console.log('--> (email', email);
+      console.log('--> (url', url);
+
+      const pathName = new URL(url).pathname;
       const p = new Path('/api/survey/:surveyId/:choice');
 
-      console.log('--> (pathName)', pathName);
+      console.log('--> (pathName', pathName);
       console.log('--> p.test(pathName)', p.test(pathName));
 
       const match = p.test(pathName);
 
       if(match){
-
-        return {
-          email,
-          surveyId: match.surveyId,
-          choice: match.choice
-        }
+        return { email, surveyId: match.surveyId, choice: match.choice }
       }
-
-      const compact = _.compact(events);
-      const uniqueEvents = _.uniqBy(compact, 'email', 'surveyId');
 
     });
 
-  })
+    const compact = _.compact(events);
+    const uniqueEvents = _.uniqBy(compact, 'email', 'surveyId');
+
+    console.log('-->uniq', uniqueEvents);
+
+    res.send({});
+
+  });
+
 };
