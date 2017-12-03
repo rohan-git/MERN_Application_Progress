@@ -10,6 +10,12 @@ const Survey = mongoose.model('survey');
 
 module.exports = app => {
 
+  app.get('/api/survey/thanks', (req, res) => {
+
+    res.send("Thanks for voting!");
+
+  });
+
   app.post('/api/survey', requireLogin, requireCredits, async (req, res) => {
 
     console.log('--> in /api/survey');
