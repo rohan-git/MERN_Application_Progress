@@ -56,4 +56,8 @@ module.exports = app => {
 
   });
 
+  app.post('/api/survey/webhook', (req, res) => {
+    console.log(' --> from sendgrid & localtunnel', res);
+    res.send({});
+  })
 };
