@@ -57,7 +57,8 @@ function validate(values, meta){
 
   const error = {};
 
-  error.emails = validateEmails(values.emails || '');
+  //  error.emails = validateEmails(values.emails || '');
+  error.recipients = validateEmails(values.recipients || '');
 
   _.each(formFields, ({name}) => {
 

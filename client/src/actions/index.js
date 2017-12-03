@@ -25,14 +25,16 @@ export const handleToken = (token) => async (dispatch) => {
 
 }
 
-export const submitSurvey = (values) => async (dispatch) => {
+export const submitSurvey = (values, history) => async (dispatch) => {
 
-  console.log('handleToken token: ', values);
+  // console.log('values: ', values);
 
-  // const res = await axios.post('/api/stripe', token);
+  const res = await axios.post('/api/survey', values);
 
-  //console.log('--> handleToken token completed ');
+  console.log('--> /api/survey completed ');
 
-  dispatch({ type: FETCH_USER, payload: values });
+  history.push('/surveys');
+
+  dispatch({ type: FETCH_USER, payload: res.data });
 
 }
