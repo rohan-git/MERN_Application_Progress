@@ -1,3 +1,7 @@
+const _ = require('lodash');
+const { URL } = require('url');
+const Path = require('path-parser');
+
 const mongoose = require('mongoose');
 
 const requireLogin = require('../middlewares/requireLogin');
@@ -63,7 +67,29 @@ module.exports = app => {
   });
 
   app.post('/api/survey/webhook', (req, res) => {
-    console.log(' --> from sendgrid & localtunnel', res);
-    res.send({});
+
+    //console.log(' --> from sendgrid & localtunnel', res);
+
+    const events = _.map(req.body, (event) => {
+
+      const pathName = new URL(event.url).pathname;
+      const p = new Path('/api/survey/:surveyId/:choice');
+
+      console.log('--> (pathName)', pathName);
+      console.log('--> p.test(pathName)', p.test(pathName));
+
+      const match = p.test(pathName);
+
+      if(match){
+
+        return {
+          email,
+          surveyId: match.surveyId,
+          choice: match.choice
+        }
+      }
+
+    });
+
   })
 };
