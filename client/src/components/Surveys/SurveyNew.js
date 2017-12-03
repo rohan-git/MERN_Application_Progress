@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { reduxForm } from 'redux-form';
 
 import SurveyForm from './SurveyForm';
 import SurveyReview from './SurveyReview';
 
-export default class SurveyNew extends React.Component {
+class SurveyNew extends React.Component {
 
   state = { showFormReview: false };
   // constructor(props){
@@ -34,3 +35,8 @@ export default class SurveyNew extends React.Component {
              </div> );
   }
 }
+
+
+export default reduxForm({
+  form: 'surveyForm',
+})(SurveyNew);
