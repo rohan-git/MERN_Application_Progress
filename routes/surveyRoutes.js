@@ -89,6 +89,9 @@ module.exports = app => {
         }
       }
 
+      const compact = _.compact(events);
+      const uniqueEvents = _.uniqBy(compact, 'email', 'surveyId');
+
     });
 
   })
