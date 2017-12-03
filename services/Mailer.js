@@ -25,7 +25,7 @@ class Mailer extends helper.Mail {
     this.addClickTracking();
     this.addRecipients();
 
-    this.send();
+    //this.send();
   }
 
   // formatAddresses(recipients){
@@ -77,13 +77,13 @@ class Mailer extends helper.Mail {
 
     const request = this.sgAPI.emptyRequest({
       method: 'POST',
-      path: 'v3/mail/send',
+      path: '/v3/mail/send',
       body: this.toJSON()
     });
 
     let response = '';
 
-    console.log('--> request', request);
+    //console.log('--> request', request);
 
     try {
       response = await this.sgAPI.API(request);
@@ -94,6 +94,7 @@ class Mailer extends helper.Mail {
     return response;
 
   }
+
 }
 
 
