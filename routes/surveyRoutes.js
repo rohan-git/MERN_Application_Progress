@@ -68,29 +68,53 @@ module.exports = app => {
 
   app.post('/api/survey/webhook', (req, res) => {
 
-    //console.log(' --> from sendgrid & localtunnel', res);
+    // console.log(' --> from sendgrid & localtunnel', res);
+    console.log(' --> req body', req.body);
 
     const events =
         _.chain(req.body)
-         .map({email, url} => {
+         .map(({email, url}) => {
 
-            console.log('--> (email', email);
-            console.log('--> (url', url);
+           if(url){
 
-            const pathName = new URL(url).pathname;
-            const p = new Path('/api/survey/:surveyId/:choice');
+              console.log('--> (email', email);
+              console.log('--> (url', url);
 
-            console.log('--> (pathName', pathName);
-            console.log('--> p.test(pathName)', p.test(pathName));
+              const pathName = new URL(url).pathname;
+              const p = new Path('/api/survey/:surveyId/:choice');
 
-            const match = p.test(pathName);
+              console.log('--> (pathName', pathName);
+              console.log('--> p.test(pathName)', p.test(pathName));
 
-            if(match){
-              return { email, surveyId: match.surveyId, choice: match.choice }
+              const match = p.test(pathName);
+
+              if(match){
+                return { email, surveyId: match.surveyId, choice: match.choice }
+              }
             }
           })
           .compact()
           .uniqBy('email', 'surveyId')
+          //.each(event => {
+          .each( ({surveyId, email, choice}) => {
+
+            console.log('-->uodating survey in db id: ', surveyId);
+            console.log('-->email: ', email);
+
+            Survey.updateOne({
+                _id: surveyId,
+                recipients: {
+                  $elemMatch: { email: email, responded: false }
+                }
+              },{
+                $inc: {[choice]: 1},
+                $set: {'recipients.$.responded': true}
+            })
+            .exec().then((x)=>{
+              console.log('-->survey updated in db: ', x);
+            });
+
+          })
           .value();
 
     console.log('-->uniq', events);
