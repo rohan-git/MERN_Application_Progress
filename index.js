@@ -46,6 +46,22 @@ require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 require('./routes/surveyRoutes')(app);
 
+if(process.env.NODE_ENV === 'production'){
+
+  app.use(express.static('client/build'));
+
+  // Express serves production assets like main.js or main.css file.
+  // Express will serve indexhtml if it doesnt see ruote
+
+  const path = require('path');
+  app.get('*', (req, res) => {
+
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+
+  });
+
+}
+
 app.get('/', (req, resp) => {
     resp.write("wee");
     console.log('default route');
