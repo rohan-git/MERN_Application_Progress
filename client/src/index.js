@@ -20,7 +20,7 @@ ReactDOM.render(
   <Provider store={store}><App /></Provider>, document.getElementById('root'));
 
 
-console.log('STRIPE KEY', process.env.REACT_APP_STRIPE_KEY);
+//console.log('STRIPE KEY', process.env.REACT_APP_STRIPE_KEY);
 console.log('ENV is ', process.env.NODE_ENV);
 
 registerServiceWorker();
