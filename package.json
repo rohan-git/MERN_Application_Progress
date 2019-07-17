@@ -24,7 +24,7 @@
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.17.1",
     "localtunnel": "^1.9.2",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.14",
     "materialize-css": "^1.0.0",
     "mongoose": "^4.13.18",
     "nodemon": "^1.19.1",
