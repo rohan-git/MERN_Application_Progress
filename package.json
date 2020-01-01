@@ -28,7 +28,7 @@
     "materialize-css": "^1.0.0",
     "mongoose": "^4.13.19",
     "nodemon": "^1.19.4",
-    "passport": "^0.4.0",
+    "passport": "^0.4.1",
     "passport-google-oauth20": "^1.0.0",
     "path-parser": "^3.0.1",
     "react-redux": "^5.1.2",
